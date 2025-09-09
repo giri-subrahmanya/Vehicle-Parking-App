@@ -1,0 +1,61 @@
+
+
+<body>
+    NAME : {{name}}
+    EMAIL : {{email}}
+    USER ID : {{user_id}}
+    TIME : {{time}}
+    TOTAL AMOUNT SPENT IN THIS MONTH : {{total_amount_spent}}
+    <div>
+        <h3>PARKING HISTORY</h3>
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                <tr>BOOKING ID</tr>
+                <tr>VEHICLE NUMBER</tr>
+                <tr>PRICE PER MINUTE</tr>
+                <tr>BOOKING TIMESTAMP</tr>
+                <tr>PARKING TIMESTAMP</tr>
+                <tr>LEAVING TIMESTAMP</tr>
+                <tr>PARKING COST</tr>
+                <tr>PRIME LOCATION NAME</tr>
+                <tr>PINCODE</tr>
+                <tr>ADDRESS</tr>
+                </tr>
+            </thead>
+            <tbody>
+                {% for booked_spot in parking_history %}
+                <tr>{{booked_spot.id}}</tr>
+                <tr>{{booked_spot.vehicle_no}}</tr>
+                <tr>{{booked_spot.price_per_minute}}</tr>
+                <tr>{{booked_spot.booking_timestamp}}</tr>
+                <tr>{{booked_spot.parking_timestamp}}</tr>
+                <tr>{{booked_spot.leaving_timestamp}}</tr>
+                <tr>{{booked_spot.parking_cost}}</tr>
+                <tr>{{booked_spot.prime_location_name}}</tr>
+                <tr>{{booked_spot.pincode}}</tr>
+                <tr>{{booked_spot.address}}</tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <h3>LOCATION-WISE NUMBER OF VISITS</h3>
+        <table>
+            <thead>
+                <tr>
+                    <td>PRIME LOCATION NAME</td>
+                    <td>VISITS COUNT</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for key in location %}
+                <tr>
+                    <td>{{key}}</td>
+                    <td>{{location[key]}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
