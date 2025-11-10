@@ -1,75 +1,67 @@
 export default {
     template: `
     <div>
-        
-        <div class="p-4 text-primary">
-            <div>
-                <div class="container-fluid bg-dark  pt-2 pb-2">
-                    <div class="row">
-                        <div >
-                            <h3 class="text-center">PARKING LOTS</h3>
-                        </div>
-                        
-                    </div>
-                </div>
-                
-            </div>
-            <div>
-            </div>
-        </div>
-        <div class="container-fluid bg-dark ">
+        <div class="container-fluid bg-dark text-light">
             <div class="row pt-2 pb-2 ps-4 pe-4  align-items-center">
                 <div class="col">
                     <h4>NAME : {{name}}</h4>
                     <h4>EMAIL : {{email}}</h4>
                 </div>
+                <div class="col d-flex justify-content-end">
+                    <button class="m-2 btn btn-success" @click="create_lot">CREATE LOT</button>
+                    <button class="m-2 btn btn-success" @click="users_list">LIST OF USERS</button>
+                    <button class="m-2 btn btn-success" @click="analytics">ANALYTICS</button>
+                    <button class="m-2 btn btn-success" @click='logout'>LOGOUT</button>
+                </div>
             </div>
         </div>
-        <div class="col d-flex justify-content-end align-items-bottom">
-                    <button class="m-2 btn btn-warning" @click="create_lot">CREATE LOT</button>
-                    <button class="m-2 btn btn-warning" @click="users_list">LIST OF USERS</button>
-                    <button class="m-2 btn btn-warning" @click="analytics">ANALYTICS</button>
-                    <button class="m-2 btn btn-warning" @click='logout'>LOGOUT</button>
-                </div>
-        <div class="container">
-        <div class="row">
-        <div class="col-3">
-                            <input class="bg-warning" type="text" v-model="search_key" class="form-control"
+        <div class="p-4">
+            <div>
+                <div class="container-fluid bg-dark text-light pt-2 pb-2">
+                    <div class="row">
+                        <div class="col-9">
+                            <h3 class="text-center">PARKING LOTS</h3>
+                        </div>
+                        <div class="col-3 align-center">
+                            <input type="text" v-model="search_key" class="form-control"
                                 placeholder="search prime_location_name">
                         </div>
-
-        </div>
-        </div>
-        <div class="table-responsive">
+                    </div>
+                </div>
+                <div class="table-responsive">
                     <table class="table text-center table-bordered table-info table-hover">
-                        <thead >
+                        <thead>
                             <tr>
-                                <th class="text-primary">ID</th>
-                                <th class="text-primary">PRIME LOCATION NAME</th>
-                                <th class="text-primary">PRICE PER MINUTE</th>
-                                <th class="text-primary">NUMBER OF SPOTS</th>
-                                <th class="text-primary">PINCODE</th>
-                                <th class="text-primary">ADDRESS</th>
-                                <th class="text-primary">NUMBER OF RESERVED SPOTS</th>
-                                <th class="text-primary">NUMBER OF AVAILABLE SPOTS</th>
-                                <th class="text-primary">MORE DETAILS</th>
+                                <th>ID</th>
+                                <th>PRIME LOCATION NAME</th>
+                                <th>PRICE PER MINUTE</th>
+                                <th>NUMBER OF SPOTS</th>
+                                <th>PINCODE</th>
+                                <th>ADDRESS</th>
+                                <th>NUMBER OF RESERVED SPOTS</th>
+                                <th>NUMBER OF AVAILABLE SPOTS</th>
+                                <th>MORE DETAILS</th>
                             </tr>
                         </thead>
-                        <tbody class="text-primary">
+                        <tbody>
                             <tr v-for="lot in search_parking_lots">
-                                <td class="text-primary">{{lot.id}}</td>
-                                <td class="text-primary">{{lot.prime_location_name}}</td>
-                                <td class="text-primary">{{lot.price_per_minute}}</td>
-                                <td class="text-primary">{{lot.number_of_spots}}</td>
-                                <td class="text-primary">{{lot.pincode}}</td>
-                                <td class="text-primary">{{lot.address}}</td>
-                                <td class="text-primary">{{lot.no_of_reserved_spots}}</td>
-                                <td class="text-primary">{{lot.no_of_available_spots}}</td>
-                                <td class="text-primary"><button class="btn btn-dark" @click="lot_details(lot.id)">Click Here</button></td>
+                                <td>{{lot.id}}</td>
+                                <td>{{lot.prime_location_name}}</td>
+                                <td>{{lot.price_per_minute}}</td>
+                                <td>{{lot.number_of_spots}}</td>
+                                <td>{{lot.pincode}}</td>
+                                <td>{{lot.address}}</td>
+                                <td>{{lot.no_of_reserved_spots}}</td>
+                                <td>{{lot.no_of_available_spots}}</td>
+                                <td><button class="btn btn-dark" @click="lot_details(lot.id)">Click Here</button></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
+            </div>
+            <div>
+            </div>
+        </div>
     </div>
     `,
     data() {
